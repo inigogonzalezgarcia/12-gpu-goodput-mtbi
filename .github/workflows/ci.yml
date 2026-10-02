@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests (standard library only, no install needed)
+        run: python -m unittest -v
+      - name: Install and run the CLI
+        run: |
+          pip install .
+          goodput checkpoint --mtbi-hours 14.8 --checkpoint-minutes 5
+          goodput analyze examples/sample-events.jsonl --slo 0.5 --window-hours 24
+
+  report:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Committed results match the simulation
+        run: python -m goodput report --check docs/results.md
+      - name: Build the report
+        run: |
+          python -m goodput report --out-dir report
+          python -m goodput simulate scenarios/06-firmware-regression.json --seed 1 -o report/firmware-regression-events.jsonl
+          python -m goodput analyze report/firmware-regression-events.jsonl --slo 0.85 | tee report/firmware-regression-analysis.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: goodput-report
+          path: report/
+          retention-days: 30
