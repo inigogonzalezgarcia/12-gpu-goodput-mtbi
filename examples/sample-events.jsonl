@@ -1,0 +1,9 @@
+# A short hand-written log: 2 nodes x 4 GPUs, one checkpoint, one interruption, one restart.
+{"time": "2026-09-01T00:00:00Z", "job": "demo", "event": "start", "nodes": 2, "gpus_per_node": 4}
+{"time": "2026-09-01T01:00:00Z", "job": "demo", "event": "checkpoint_start"}
+{"time": "2026-09-01T01:15:00Z", "job": "demo", "event": "checkpoint_end"}
+{"time": "2026-09-01T01:45:00Z", "job": "demo", "event": "interrupt", "cause": "gpu_xid79", "node": "r01-n02"}
+{"time": "2026-09-01T02:00:00Z", "job": "demo", "event": "detected"}
+{"time": "2026-09-01T02:15:00Z", "job": "demo", "event": "nodes_ready"}
+{"time": "2026-09-01T02:45:00Z", "job": "demo", "event": "running"}
+{"time": "2026-09-01T03:45:00Z", "job": "demo", "event": "end"}
