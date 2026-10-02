@@ -1,0 +1,14 @@
+{
+  "base": "04-fast-hang-detection.json",
+  "name": "combined",
+  "description": "Fast hang detection, asynchronous checkpoints with a Daly interval and 8 spares.",
+  "checkpoint_minutes": 0.5,
+  "checkpoint_interval_minutes": "daly",
+  "node_groups": [
+    {
+      "count": 136,
+      "mtbf_hours": 3000,
+      "label": "default"
+    }
+  ]
+}

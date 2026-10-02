@@ -1,0 +1,7 @@
+{
+  "base": "01-baseline.json",
+  "name": "async-checkpoint",
+  "description": "Asynchronous checkpointing: training blocks only for a 30-second snapshot to host memory; interval re-tuned with Daly.",
+  "checkpoint_minutes": 0.5,
+  "checkpoint_interval_minutes": "daly"
+}

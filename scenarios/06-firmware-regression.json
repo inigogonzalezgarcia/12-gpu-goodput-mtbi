@@ -1,0 +1,17 @@
+{
+  "base": "01-baseline.json",
+  "name": "firmware-regression",
+  "description": "32 nodes on a firmware batch that makes them fail five times as often (MTBF 600 h). Used in docs/post-incident-review.md.",
+  "node_groups": [
+    {
+      "count": 100,
+      "mtbf_hours": 3000,
+      "label": "default"
+    },
+    {
+      "count": 32,
+      "mtbf_hours": 600,
+      "label": "fw-batch-b"
+    }
+  ]
+}

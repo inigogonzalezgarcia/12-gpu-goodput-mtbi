@@ -1,0 +1,12 @@
+{
+  "base": "01-baseline.json",
+  "name": "no-spares",
+  "description": "Baseline without spare nodes: every hardware failure waits for a repair.",
+  "node_groups": [
+    {
+      "count": 128,
+      "mtbf_hours": 3000,
+      "label": "default"
+    }
+  ]
+}

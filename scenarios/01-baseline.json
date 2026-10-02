@@ -1,0 +1,73 @@
+{
+  "name": "baseline",
+  "description": "1,024-GPU pre-training job on 128 nodes with 4 spares, checkpoint every 30 minutes (5 minutes to write), hangs detected by a 30-minute watchdog.",
+  "job_name": "llm-pretrain",
+  "job_nodes": 128,
+  "gpus_per_node": 8,
+  "node_groups": [
+    {
+      "count": 132,
+      "mtbf_hours": 3000,
+      "label": "default"
+    }
+  ],
+  "job_mtbi_hours": 40,
+  "node_causes": [
+    {
+      "name": "gpu_xid79",
+      "share": 0.25,
+      "detect_minutes": 3,
+      "node_down": true,
+      "description": "GPU has fallen off the bus (XID 79): the process crashes"
+    },
+    {
+      "name": "gpu_memory",
+      "share": 0.2,
+      "detect_minutes": 3,
+      "node_down": true,
+      "description": "uncorrectable ECC or row-remapping failure (XID 48/63/64)"
+    },
+    {
+      "name": "fabric_link",
+      "share": 0.15,
+      "detect_minutes": 30,
+      "node_down": true,
+      "description": "NVLink or InfiniBand link error; the collective usually hangs until the watchdog fires"
+    },
+    {
+      "name": "host",
+      "share": 0.1,
+      "detect_minutes": 5,
+      "node_down": true,
+      "description": "host fault: memory, PSU, kernel panic"
+    },
+    {
+      "name": "collective_hang",
+      "share": 0.3,
+      "detect_minutes": 30,
+      "node_down": false,
+      "description": "collective hang with no hardware fault found; the node stays in the job"
+    }
+  ],
+  "job_causes": [
+    {
+      "name": "software_crash",
+      "share": 0.6,
+      "detect_minutes": 1,
+      "node_down": false,
+      "description": "framework or training-code crash"
+    },
+    {
+      "name": "storage_stall",
+      "share": 0.4,
+      "detect_minutes": 30,
+      "node_down": false,
+      "description": "data or checkpoint storage stall; the job hangs until the watchdog fires"
+    }
+  ],
+  "checkpoint_minutes": 5,
+  "checkpoint_interval_minutes": 30,
+  "restart_minutes": 20,
+  "repair_hours": 48,
+  "days": 28
+}

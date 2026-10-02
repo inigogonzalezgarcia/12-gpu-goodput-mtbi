@@ -1,0 +1,6 @@
+{
+  "base": "01-baseline.json",
+  "name": "daly-interval",
+  "description": "Baseline with the checkpoint interval set by Daly's formula instead of a fixed 30 minutes.",
+  "checkpoint_interval_minutes": "daly"
+}
