@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpu-goodput-mtbi"
+version = "0.1.0"
+description = "Simulate GPU training-job interruptions and measure goodput, MTBI and where the GPU-hours go"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = []
+
+[project.scripts]
+goodput = "goodput.cli:main"
+
+[tool.setuptools]
+packages = ["goodput"]
