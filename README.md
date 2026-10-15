@@ -93,7 +93,7 @@ CI also builds the HTML report (one self-contained file with charts) and attache
 
 Want to talk about GPU cluster reliability, goodput or a lab like this for your team? Get in touch:
 
-- Email: [inigogonzalezgarcia@yahoo.es](mailto:inigogonzalezgarcia@yahoo.es)
+- Website (contact form): [inigogonzalezgarcia.github.io](https://inigogonzalezgarcia.github.io/about.html#contacto)
 - LinkedIn: [linkedin.com/in/igonzalez93](https://www.linkedin.com/in/igonzalez93)
 
 ## License
