@@ -6,7 +6,7 @@ How much of a large GPU training job's time actually trains the model, where the
 
 ![ci](https://github.com/inigogonzalezgarcia/12-gpu-goodput-mtbi/actions/workflows/ci.yml/badge.svg)
 
-> A learning-in-public lab about reliability for large GPU clusters. I don't have production GPU fleet experience; this project is how I am learning the problem. All numbers come from a simulation with assumptions documented in [docs/assumptions.md](docs/assumptions.md), set between two published reference points (Meta's Llama 3 report and Meta's research-cluster reliability paper). They are not measurements of any real cluster.
+> A lab on reliability for large GPU clusters, built on availability and capacity management and post-incident reviews. All numbers come from a simulation with assumptions documented in [docs/assumptions.md](docs/assumptions.md), set between two published reference points (Meta's Llama 3 report and Meta's research-cluster reliability paper). They illustrate the model rather than measure a specific cluster.
 
 Fourth in a series: [09 – node remediation](https://github.com/inigogonzalezgarcia/09-gpu-node-remediation), [10 – fleet observability](https://github.com/inigogonzalezgarcia/10-gpu-fleet-observability), [11 – fleet lifecycle](https://github.com/inigogonzalezgarcia/11-gpu-fleet-lifecycle). Those repos keep nodes healthy; this one measures what that is worth to the jobs.
 
